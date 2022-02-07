@@ -5,6 +5,10 @@
 
 using namespace std;
 
+void print_file(std::string path)
+{
+
+}
 void create_file(string path)
 {
 	ofstream outFile;
