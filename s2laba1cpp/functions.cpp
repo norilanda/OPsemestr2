@@ -7,13 +7,16 @@ using namespace std;
 
 string check_last_char(string str)
 {
-	string charsToCheck = " .,";
-	size_t len = str.length();
-	char lastChar = str[len - 1];
-	size_t pos = charsToCheck.find(lastChar);
-	if (pos == string::npos)
+	if (!str.empty())
 	{
-		str = "-";
+		string charsToCheck = " .,";
+		size_t len = str.length();
+		char lastChar = str[len - 1];
+		size_t pos = charsToCheck.find(lastChar);
+		if (pos == string::npos)
+		{
+			str = "-";
+		}
 	}
 	return str;
 }
