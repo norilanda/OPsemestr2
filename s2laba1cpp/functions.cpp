@@ -13,13 +13,9 @@ string check_last_char(string str)
 	size_t pos = charsToCheck.find(lastChar);
 	if (pos == string::npos)
 	{
-
+		str = "-";
 	}
-	else
-	{
-
-	}
-
+	return str;
 }
 void rewrite_text_into_new_file(std::string path, std::string newPath)
 {
