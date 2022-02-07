@@ -15,8 +15,14 @@ void print_file(std::string path)
 	}
 	else
 	{
-
+		while (!inFile.eof())
+		{
+			string stringOfText;
+			getline(inFile, stringOfText);
+			cout << stringOfText << '\n';
+		}		
 	}
+	inFile.close();
 }
 void create_file(string path)
 {
@@ -37,4 +43,5 @@ void create_file(string path)
 			getline(cin, stringOfText);
 		}
 	}
+	outFile.close();
 }
