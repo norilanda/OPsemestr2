@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void print_file(std::string path)
+void print_file(string path)
 {
 	ifstream inFile;
 	inFile.open(path);
