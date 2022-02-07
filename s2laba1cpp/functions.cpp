@@ -5,6 +5,10 @@
 
 using namespace std;
 
+void rewrite_text_into_new_file(std::string path, std::string newPath)
+{
+
+}
 void print_file(string path)
 {
 	ifstream inFile;
