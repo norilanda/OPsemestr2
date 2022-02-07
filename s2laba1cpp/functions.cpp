@@ -15,6 +15,13 @@ void create_file(string path)
 	}
 	else
 	{
-
+		string stringOfText;
+		cout << "Enter your strings. To finish press 'Enter' twice\n";
+		getline(cin, stringOfText);
+		while (!stringOfText.empty())
+		{
+			outFile << stringOfText << '\n';
+			getline(cin, stringOfText);
+		}
 	}
 }
