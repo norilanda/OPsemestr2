@@ -5,17 +5,28 @@
 
 using namespace std;
 
+string check_last_char(string str)
+{
+
+}
 void rewrite_text_into_new_file(std::string path, std::string newPath)
 {
 	ifstream inFile;
+	ofstream newFile;
 	inFile.open(path);
-	if (!inFile.is_open())
+	newFile.open(newPath);
+	if (!inFile.is_open()||!newFile.is_open())
 	{
 		cout << "Cannot open the file!";
 	}
 	else
 	{
-
+		while (!inFile.eof())
+		{
+			string tempString;
+			getline(inFile, tempString);
+			
+		}
 	}
 }
 void print_file(string path)
