@@ -7,7 +7,16 @@ using namespace std;
 
 void rewrite_text_into_new_file(std::string path, std::string newPath)
 {
+	ifstream inFile;
+	inFile.open(path);
+	if (!inFile.is_open())
+	{
+		cout << "Cannot open the file!";
+	}
+	else
+	{
 
+	}
 }
 void print_file(string path)
 {
