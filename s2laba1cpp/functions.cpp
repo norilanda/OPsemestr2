@@ -7,7 +7,16 @@ using namespace std;
 
 void print_file(std::string path)
 {
+	ifstream inFile;
+	inFile.open(path);
+	if (!inFile.is_open())
+	{
+		cout << "Cannot open the file!";
+	}
+	else
+	{
 
+	}
 }
 void create_file(string path)
 {
