@@ -33,9 +33,12 @@ void rewrite_text_into_new_file(std::string path, std::string newPath)
 		{
 			string tempString;
 			getline(inFile, tempString);
-			
+			tempString = check_last_char(tempString);
+			newFile << tempString << '\n';
 		}
 	}
+	inFile.close();
+	newFile.close();
 }
 void print_file(string path)
 {
