@@ -8,5 +8,13 @@ using namespace std;
 void create_file(string path)
 {
 	ofstream outFile;
-	outFile.open(path)
+	outFile.open(path);
+	if (!outFile.is_open())
+	{
+		cout << "Cannot open the file!";
+	}
+	else
+	{
+
+	}
 }
