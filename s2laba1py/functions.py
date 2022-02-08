@@ -25,3 +25,5 @@ def rewrite_text_into_new_file(path, new_path):
     for string in in_file:
         string=check_last_char(string)
         new_file.write(string)
+    in_file.close()
+    new_file.close()
