@@ -21,3 +21,7 @@ def check_last_char(string):
 
 def rewrite_text_into_new_file(path, new_path):
     in_file=open(path,'rt')
+    new_file=open(new_path, 'wt')
+    for string in in_file:
+        string=check_last_char(string)
+        new_file.write(string)
