@@ -10,6 +10,7 @@ def print_file(path):
     in_file=open(path,'rt')
     for string in in_file:
         print(string,end='')
+    print('\n')
     in_file.close()
 
 def check_last_char(string):
