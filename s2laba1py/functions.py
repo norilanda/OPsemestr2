@@ -11,3 +11,8 @@ def print_file(path):
     for string in in_file:
         print(string,end='')
     in_file.close()
+
+def check_last_char(string):
+
+def rewrite_text_into_new_file(path, new_path):
+    in_file=open(path,'rt')
