@@ -6,6 +6,8 @@ using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL, ".1251");
+    system("chcp 1251 > null");
     string pathOfFile = "file.txt";
     string pathOfNewFile = "new file.txt";
     create_file(pathOfFile);
