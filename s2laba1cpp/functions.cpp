@@ -42,6 +42,7 @@ void print_file(string path)
 			getline(inFile, stringOfText);
 			cout << stringOfText << '\n';
 		}
+		cout << '\n';
 	}
 	inFile.close();
 }
