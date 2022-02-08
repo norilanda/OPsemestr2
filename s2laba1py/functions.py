@@ -13,8 +13,11 @@ def print_file(path):
     in_file.close()
 
 def check_last_char(string):
-    string=string.rstrip('\n')
-    
+    chars_to_check=' .,'
+    string_without_end=string.rstrip('\n')
+    if chars_to_check.find(string_without_end[-1])==-1:
+        string='-\n'
+    return string
 
 def rewrite_text_into_new_file(path, new_path):
     in_file=open(path,'rt')
