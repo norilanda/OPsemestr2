@@ -16,9 +16,11 @@ void create_file(string path)
 	else
 	{
 		string stringOfText;
-		cout << "Enter your strings. To finish press 'Enter' twice\n";
+		char keyToFinishTypingText = 24;
+		cout << "Enter your strings. To finish entering a string press 'Enter'."<<
+			" To finish typing text press combination 'Ctrl + x' (hold 'Ctrl' and press 'x')\n";
 		getline(cin, stringOfText);
-		while (!stringOfText.empty())
+		while (stringOfText[0]!= keyToFinishTypingText)
 		{
 			outFile << stringOfText << '\n';
 			getline(cin, stringOfText);
