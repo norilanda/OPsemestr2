@@ -1,8 +1,8 @@
 def create_file(path):
     out_file=open(path,'wt')
-    keyToFinishTypingText=chr(24)
+    keyToFinishTypingText=chr(19)
     string_of_text=input("Enter your strings. To finish entering a string press 'Enter'.\n"+
-			"To finish typing text press combination 'Ctrl + x' (hold 'Ctrl' and press 'x')\n")
+			"To finish typing text press combination 'Ctrl + s' (hold 'Ctrl' and press 's')\n")
     while string_of_text[0]!=keyToFinishTypingText:
         out_file.write(string_of_text+'\n')
         string_of_text=input()
