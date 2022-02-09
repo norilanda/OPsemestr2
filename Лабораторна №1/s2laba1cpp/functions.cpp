@@ -17,8 +17,8 @@ void create_file(string path)
 	{
 		string stringOfText;
 		char keyToFinishTypingText = 24;
-		cout << "Enter your strings. To finish entering a string press 'Enter'."<<
-			" To finish typing text press combination 'Ctrl + x' (hold 'Ctrl' and press 'x')\n";
+		cout << "Enter your strings. To finish entering a string press 'Enter'.\n"<<
+			"To finish typing text press combination 'Ctrl + x' (hold 'Ctrl' and press 'x')\n";
 		getline(cin, stringOfText);
 		while (stringOfText[0]!= keyToFinishTypingText)
 		{
