@@ -7,7 +7,8 @@ using namespace std;
 
 char choose_file_mode()
 {
-	cout << "Do you want to create a new file or just to add new information? To create a new file enter 'n', to add information enter 'a': ";
+	cout << "Do you want to create a new file or just to add new information?\n"
+		<<" To create a new file enter 'n', to add information enter 'a': ";
 	char answer; cin >> answer;
 	while (answer != 'a' && answer != 'n')
 	{

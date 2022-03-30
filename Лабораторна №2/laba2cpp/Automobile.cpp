@@ -45,12 +45,14 @@ std::vector <Automobile> create_automobile_list()
 	std::vector <Automobile> automobileList;
 	cout << "Enter number of the automobiles: ";
 	cin >> n; cin.ignore();
+	cout << endl;
 	for (int i = 0; i < n; i++)
 	{
 		Automobile automobile = init_automobile();
 		automobileList.push_back(automobile);
 		cout << endl;
 	}
+	cout << "--------------------------------------------------\n";
 	return automobileList;
 }
 void print_automobile_list(std::vector <Automobile>automobileList)
