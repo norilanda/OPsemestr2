@@ -37,18 +37,29 @@ void write_automobiles_into_file(string path)
 	outFile.close();	
 }
 
-void display_file_information(std::string path)
+vector <Automobile> read_file_into_list(string path)
 {
 	vector <Automobile> automobileList;
 	ifstream inFile(path, ios::binary);
 	if (!inFile.is_open())
 		cout << "Cannot open the file!\n";
 	else
-	{		
+	{
 		Automobile automobile;
 		while (inFile.read((char*)&automobile, sizeof(Automobile)))
 			automobileList.push_back(automobile);
 	}
 	inFile.close();
+	return automobileList;
+}
+
+void display_file_information(string path)
+{
+	vector <Automobile> automobileList = read_file_into_list(path);
 	print_automobile_list(automobileList);
+}
+
+void write_new_file_of_automobile(string pathOld, string pathNew)
+{
+
 }
