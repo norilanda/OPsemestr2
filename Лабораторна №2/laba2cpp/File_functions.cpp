@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "Automobile.h"
+
+using namespace std;
+
+char choose_file_mode()
+{
+	cout << "Do you want to create a new file or just to add new information? To create a new file enter 'n', to add information enter 'a': ";
+	char answer; cin >> answer;
+	while (answer != 'a' && answer != 'n')
+	{
+		cout << "Wrong letter! Try again! ";
+		cin >> answer;
+	}
+	return answer;
+}
+
+void write_automobiles_into_file(string path)
+{
+	char answer = choose_file_mode();
+	ofstream outFile;
+	if (answer == 'n')
+		outFile.open(path, ios::binary);
+	else
+		outFile.open(path, ios::binary|ios::app);
+	if (!outFile.is_open())
+		cout << "Cannot open the file!\n";
+	else
+	{
+		vector <Automobile> automobileList = create_automobile_list();
+		for (int i = 0; i < automobileList.size(); i++)
+			outFile.write((char*)&automobileList[i], sizeof(Automobile));
+	}
+	outFile.close();	
+}
