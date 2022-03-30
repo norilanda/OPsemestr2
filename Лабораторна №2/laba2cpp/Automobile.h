@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+
 struct Date
 {
 	int day;
@@ -14,3 +16,5 @@ struct Automobile
 Automobile init_automobile();
 void print_automobile(Automobile automobile);
 void print_date(Date date);
+std::vector <Automobile> create_automobile_list();
+void print_automobile_list(std::vector <Automobile>);

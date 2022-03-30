@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "Automobile.h"
 
 using namespace std;
@@ -37,4 +38,26 @@ void print_date(Date date)
 	else
 		cout << date.month << ".";
 	cout << date.year;
+}
+std::vector <Automobile> create_automobile_list()
+{
+	int n;
+	std::vector <Automobile> automobileList;
+	cout << "Enter number of the automobiles: ";
+	cin >> n; cin.ignore();
+	for (int i = 0; i < n; i++)
+	{
+		Automobile automobile = init_automobile();
+		automobileList.push_back(automobile);
+		cout << endl;
+	}
+	return automobileList;
+}
+void print_automobile_list(std::vector <Automobile>automobileList)
+{
+	for (int i = 0; i < automobileList.size(); i++)
+	{
+		print_automobile(automobileList[i]);
+		cout << endl;
+	}
 }
