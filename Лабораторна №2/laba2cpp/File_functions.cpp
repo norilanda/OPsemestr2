@@ -62,4 +62,14 @@ void display_file_information(string path)
 void write_new_file_of_automobile(string pathOld, string pathNew)
 {
 	vector <Automobile> currentList = read_file_into_list(pathOld);
+	vector <Automobile> newtList = create_list_of_two_month_automobile(currentList);
+	ofstream outFile(pathNew, ios::binary);
+	if (!outFile.is_open())
+		cout << "Cannot open the file!\n";
+	else
+	{
+		for (int i = 0; i < newtList.size(); i++)
+			outFile.write((char*)&newtList[i], sizeof(Automobile));
+	}
+	outFile.close();
 }
