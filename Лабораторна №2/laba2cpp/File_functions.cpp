@@ -61,5 +61,5 @@ void display_file_information(string path)
 
 void write_new_file_of_automobile(string pathOld, string pathNew)
 {
-
+	vector <Automobile> currentList = read_file_into_list(pathOld);
 }
