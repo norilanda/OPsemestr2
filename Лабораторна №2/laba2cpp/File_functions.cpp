@@ -73,3 +73,19 @@ void write_new_file_of_automobile(string pathOld, string pathNew)
 	}
 	outFile.close();
 }
+
+void display_automobiles_released_before_year(string path)
+{
+	int year;
+	cout << "Enter the year to see automobiles which have not been released before this year: ";
+	cin >> year; cin.ignore();
+	vector <Automobile> automobileList = read_file_into_list(path);
+	for (int i = 0; i < automobileList.size(); i++)
+	{
+		if (automobileList[i].releaseDate.year >= year)
+		{
+			print_automobile(automobileList[i]);
+			cout << endl;
+		}
+	}
+}

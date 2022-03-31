@@ -64,7 +64,6 @@ void print_automobile_list(vector <Automobile>automobileList)
 	for (int i = 0; i < automobileList.size(); i++)
 	{
 		print_automobile(automobileList[i]); 
-		is_less_than_two_month_between_release_and_sale(automobileList[i]);
 		cout << endl;
 	}
 }
