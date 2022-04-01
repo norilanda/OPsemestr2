@@ -70,24 +70,21 @@ void print_automobile_list(vector <Automobile>automobileList)
 
 bool is_less_than_two_month_between_release_and_sale(Automobile automobile)
 {
-	bool is_less = false;
-	int year_difference = automobile.saleDate.year - automobile.releaseDate.year;
-	if (year_difference < 2)
-	{
-		int month_difference;
-		if (year_difference == 1)
-			month_difference = 12 - automobile.releaseDate.month + automobile.saleDate.month;
-		else if (year_difference == 0)
-			month_difference = automobile.saleDate.month - automobile.releaseDate.month;
-		if (month_difference == 2)
-		{ 
-			if (automobile.saleDate.day <= automobile.releaseDate.day)
-				is_less = true;
-		}
-		else if(month_difference<2)
-			is_less = true;
+	bool isLess = false;
+	int yearDifference = automobile.saleDate.year - automobile.releaseDate.year;
+	int monthDifference = 3;
+	if (yearDifference == 1)
+		monthDifference = 12 - automobile.releaseDate.month + automobile.saleDate.month;
+	else if (yearDifference == 0)
+		monthDifference = automobile.saleDate.month - automobile.releaseDate.month;
+	if (monthDifference == 2)
+	{ 
+		if (automobile.saleDate.day <= automobile.releaseDate.day)
+			isLess = true;
 	}
-	return is_less;
+	else if(monthDifference < 2)
+		isLess = true;
+	return isLess;
 }
 
 vector <Automobile> create_list_of_two_month_automobile(vector <Automobile> oldList)
