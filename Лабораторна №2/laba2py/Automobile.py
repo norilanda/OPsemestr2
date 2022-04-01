@@ -45,7 +45,7 @@ def create_automobile_list():
     return automobileList
 
 
-def print_automobile_list(automobileList):
+def print_automobile_list(automobile_list):
     for automobile in automobileList:
         print_automobile(automobile)
         print()
