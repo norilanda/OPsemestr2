@@ -51,3 +51,25 @@ def print_automobile_list(automobile_list):
     for automobile in automobile_list:
         print_automobile(automobile)
         print()
+
+def is_less_than_two_month_between_release_and_sale(automobile):
+    is_less = False
+    year_difference = automobile['sale_date']['year'] - automobile['release_date']['year']
+    month_difference = 3    
+    if year_difference == 1:
+        month_difference = 12 - automobile['release_date']['month'] + automobile['sale_date']['month']
+    elif year_difference == 0:
+        month_difference = automobile['sale_date']['month'] - automobile['release_date']['month']
+    if month_difference == 2:
+        if automobile['sale_date']['day'] <= automobile['release_date']['day']:
+            is_less = True
+    elif month_difference < 2:
+        is_less = True
+    return is_less
+
+def create_list_of_two_month_automobile(old_list):
+    new_list = []
+    for automobile in old_list:
+        if is_less_than_two_month_between_release_and_sale(automobile):
+            new_list.append(automobile)
+    return new_list
