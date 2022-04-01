@@ -74,7 +74,7 @@ void write_new_file_of_automobile(string pathOld, string pathNew)
 	outFile.close();
 }
 
-void display_automobiles_released_before_year(string path)
+void display_automobiles_released_not_earlier_than_year(string path)
 {
 	int year;
 	cout << "Enter the year to see automobiles which have not been released before this year: ";

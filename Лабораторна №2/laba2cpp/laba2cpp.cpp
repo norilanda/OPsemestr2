@@ -16,6 +16,6 @@ int main()
     cout << "There is a list of automobiles that have been sold within 2 months after production:\n";
     display_file_information(newPathAutoList);
     cout << "-----------------------------------------------------\n\n";
-    display_automobiles_released_before_year(pathAutoList);
+    display_automobiles_released_not_earlier_than_year(pathAutoList);
 }
 
