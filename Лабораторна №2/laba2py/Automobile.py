@@ -28,7 +28,7 @@ def print_date(date):
     if date['day'] < 10:
         print(f"0{date['day']}.", end = '')
     else:
-        print(f"0{date['day']}.", end = '')
+        print(f"{date['day']}.", end = '')
     if date['month'] < 10:
         print(f"0{date['month']}.", end = '')
     else:
@@ -36,16 +36,18 @@ def print_date(date):
     print(date['year']) 
 
 def create_automobile_list():
-    n = input("Enter number of the automobiles: ")
-    automobileList = []
+    n = int(input("Enter number of the automobiles: "))
+    print()
+    automobile_list = []
     for i in range(n):
         automobile = init_automobile()
-        automobileList.append(automobile)
+        automobile_list.append(automobile)
+        print()
     print("----------------------------------------\n")
-    return automobileList
+    return automobile_list
 
 
 def print_automobile_list(automobile_list):
-    for automobile in automobileList:
+    for automobile in automobile_list:
         print_automobile(automobile)
         print()
