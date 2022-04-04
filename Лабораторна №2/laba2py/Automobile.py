@@ -5,6 +5,7 @@ def init_automobile():
         'release_date' : init_date("release"),
         'sale_date' : init_date("sale")
     }
+    automobile = check_sale_date_is_not_smaller_than_release_date(automobile)
     return automobile
 
 def print_automobile(automobile):
@@ -22,7 +23,26 @@ def init_date(type_of_data):
        'month' : int(str[1]),
        'year' : int(str[2])
     }
+    while date['day'] < 1 or date['day']>31 or date['month'] < 1 or date['month']>12 or date['year'] < 0:
+        str = input("Your date is incorrect! Try again! Enter date in format dd.mm.yyyy: ")
+        str = str.split('.')
+        date['day'] = int(str[0])
+        date['month'] = int(str[1])
+        date['year'] = int(str[2])
     return date
+
+def check_sale_date_is_not_smaller_than_release_date(automobile):
+    year_factor = 365
+    month_factor = 31
+    release_days = automobile['release_date']['day'] + automobile['release_date']['month']*month_factor + automobile['release_date']['year']*year_factor
+    sale_days = automobile['sale_date']['day'] + automobile['sale_date']['month']*month_factor + automobile['sale_date']['year']*year_factor
+    while sale_days < release_days:
+        print("Sale date can't be smaller than release date. Please, enter correct dates.")
+        automobile['release_date'] = init_date("release")
+        automobile['sale_date'] = init_date("sale")
+        release_days = automobile['release_date']['day'] + automobile['release_date']['month']*month_factor + automobile['release_date']['year']*year_factor
+        sale_days = automobile['sale_date']['day'] + automobile['sale_date']['month']*month_factor + automobile['sale_date']['year']*year_factor
+    return automobile
 
 def print_date(date):
     if date['day'] < 10:
