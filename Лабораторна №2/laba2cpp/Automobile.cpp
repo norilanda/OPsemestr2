@@ -9,13 +9,10 @@ Automobile init_automobile()
 	cout << "Enter automobile's name: ";
 	cin.getline(automobile.name, sizeof(automobile.name));
 	cout << "Enter release date in this format dd.mm.yyyy: ";
-	cin >> automobile.releaseDate.day; cin.ignore();
-	cin >> automobile.releaseDate.month; cin.ignore();
-	cin >> automobile.releaseDate.year; cin.ignore();
+	automobile.releaseDate = init_date();
 	cout << "Enter sale date in this format dd.mm.yyyy: ";
-	cin >> automobile.saleDate.day; cin.ignore();
-	cin >> automobile.saleDate.month; cin.ignore();
-	cin >> automobile.saleDate.year; cin.ignore();
+	automobile.saleDate = init_date();
+	check_sale_date_is_not_smaller_than_release_date(automobile);
 	return automobile;
 }
 
@@ -27,6 +24,40 @@ void print_automobile(Automobile automobile)
 	cout << endl << "Sale date: ";
 	print_date(automobile.saleDate);
 	cout << endl;
+}
+
+Date init_date()
+{
+	Date date;
+	cin >> date.day; cin.ignore();
+	cin >> date.month; cin.ignore();
+	cin >> date.year; cin.ignore();
+	while (date.day < 1 || date.day>31 || date.month < 1 || date.month>12 || date.year < 0)
+	{
+		cout << "Your date is incorrect! Try again! Enter date in format dd.mm.yyyy: ";
+		cin >> date.day; cin.ignore();
+		cin >> date.month; cin.ignore();
+		cin >> date.year; cin.ignore();
+	}
+	return date;
+}
+
+void check_sale_date_is_not_smaller_than_release_date(Automobile& automobile)
+{
+	int year_factor = 365;
+	int month_factor = 31;
+	int release_days = automobile.releaseDate.day + automobile.releaseDate.month * month_factor + automobile.releaseDate.year * year_factor;
+	int sale_days = automobile.saleDate.day + automobile.saleDate.month * month_factor + automobile.saleDate.year * year_factor;
+	while (sale_days < release_days)
+	{
+		cout << "Sale date can't be smaller than release date. Please, enter correct dates.\n";
+		cout << "Release date dd.mm.yyyy: ";
+		automobile.releaseDate = init_date();
+		cout << "Sale date dd.mm.yyyy: ";
+		automobile.saleDate = init_date();
+		release_days = automobile.releaseDate.day + automobile.releaseDate.month * month_factor + automobile.releaseDate.year * year_factor;
+		sale_days = automobile.saleDate.day + automobile.saleDate.month * month_factor + automobile.saleDate.year * year_factor;
+	}
 }
 
 void print_date(Date date)
@@ -49,6 +80,11 @@ vector <Automobile> create_automobile_list()
 	cout << "Enter number of the automobiles: ";
 	cin >> n; cin.ignore();
 	cout << endl;
+	while (n < 0)
+	{
+		cout << "Number of the automobiles can't be negative. Try again! ";
+		cin >> n; cin.ignore();
+	}
 	for (int i = 0; i < n; i++)
 	{
 		Automobile automobile = init_automobile();

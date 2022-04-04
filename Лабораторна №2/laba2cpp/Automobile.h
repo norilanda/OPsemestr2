@@ -15,6 +15,8 @@ struct Automobile
 };
 Automobile init_automobile();
 void print_automobile(Automobile automobile);
+Date init_date();
+void check_sale_date_is_not_smaller_than_release_date(Automobile& automobile);
 void print_date(Date date);
 std::vector <Automobile> create_automobile_list();
 void print_automobile_list(std::vector <Automobile> automobileList);
