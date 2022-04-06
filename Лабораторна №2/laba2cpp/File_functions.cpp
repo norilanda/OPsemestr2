@@ -56,7 +56,11 @@ vector <Automobile> read_file_into_list(string path)
 void display_file_information(string path)
 {
 	vector <Automobile> automobileList = read_file_into_list(path);
-	print_automobile_list(automobileList);
+	for (int i = 0; i < automobileList.size(); i++)
+	{
+		print_automobile(automobileList[i]);
+		cout << endl;
+	}
 }
 
 void write_new_file_of_automobile(string pathOld, string pathNew)

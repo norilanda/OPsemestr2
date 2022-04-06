@@ -32,7 +32,10 @@ Date init_date()
 	cin >> date.day; cin.ignore();
 	cin >> date.month; cin.ignore();
 	cin >> date.year; cin.ignore();
-	while (date.day < 1 || date.day>31 || date.month < 1 || date.month>12 || date.year < 0)
+	const int MINDATE = 1;
+	const int MAXDAY = 31;
+	const int MAXMONTH = 12;
+	while (date.day < MINDATE || date.day>MAXDAY || date.month < MINDATE || date.month> MAXMONTH || date.year < MINDATE)
 	{
 		cout << "Your date is incorrect! Try again! Enter date in format dd.mm.yyyy: ";
 		cin >> date.day; cin.ignore();
@@ -95,22 +98,14 @@ vector <Automobile> create_automobile_list()
 	return automobileList;
 }
 
-void print_automobile_list(vector <Automobile>automobileList)
-{
-	for (int i = 0; i < automobileList.size(); i++)
-	{
-		print_automobile(automobileList[i]); 
-		cout << endl;
-	}
-}
-
 bool is_less_than_two_month_between_release_and_sale(Automobile automobile)
 {
+	const int MAXMONTH = 12;
 	bool isLess = false;
 	int yearDifference = automobile.saleDate.year - automobile.releaseDate.year;
 	int monthDifference = 3;
 	if (yearDifference == 1)
-		monthDifference = 12 - automobile.releaseDate.month + automobile.saleDate.month;
+		monthDifference = MAXMONTH - automobile.releaseDate.month + automobile.saleDate.month;
 	else if (yearDifference == 0)
 		monthDifference = automobile.saleDate.month - automobile.releaseDate.month;
 	if (monthDifference == 2)

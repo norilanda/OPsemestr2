@@ -1,5 +1,5 @@
 import pickle
-from Automobile import create_automobile_list, print_automobile_list, create_list_of_two_month_automobile, print_automobile
+from Automobile import create_automobile_list, create_list_of_two_month_automobile, print_automobile
 
 def choose_file_mode():
     print("Do you want to create a new file or just to add new information?")
@@ -32,7 +32,9 @@ def read_file_into_list(path):
 
 def display_file_information(path):
     automobile_list = read_file_into_list(path)
-    print_automobile_list(automobile_list)
+    for automobile in automobile_list:
+        print_automobile(automobile)
+        print()
 
 def write_new_file_of_automobile(path_old, path_new):
     current_list = read_file_into_list(path_old)

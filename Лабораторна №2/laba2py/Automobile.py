@@ -23,7 +23,10 @@ def init_date(type_of_data):
        'month' : int(str[1]),
        'year' : int(str[2])
     }
-    while date['day'] < 1 or date['day']>31 or date['month'] < 1 or date['month']>12 or date['year'] < 0:
+    MINDATE = 1
+    MAXDAY = 31
+    MAXMONTH = 12
+    while date['day'] < MINDATE or date['day']> MAXDAY or date['month'] < MINDATE or date['month']> MAXMONTH or date['year'] < MINDATE:
         str = input("Your date is incorrect! Try again! Enter date in format dd.mm.yyyy: ")
         str = str.split('.')
         date['day'] = int(str[0])
@@ -66,18 +69,13 @@ def create_automobile_list():
     print("----------------------------------------\n")
     return automobile_list
 
-
-def print_automobile_list(automobile_list):
-    for automobile in automobile_list:
-        print_automobile(automobile)
-        print()
-
 def is_less_than_two_month_between_release_and_sale(automobile):
+    MAXMONTH = 12
     is_less = False
     year_difference = automobile['sale_date']['year'] - automobile['release_date']['year']
     month_difference = 3    
     if year_difference == 1:
-        month_difference = 12 - automobile['release_date']['month'] + automobile['sale_date']['month']
+        month_difference = MAXMONTH - automobile['release_date']['month'] + automobile['sale_date']['month']
     elif year_difference == 0:
         month_difference = automobile['sale_date']['month'] - automobile['release_date']['month']
     if month_difference == 2:
