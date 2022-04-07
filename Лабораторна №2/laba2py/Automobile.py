@@ -48,15 +48,9 @@ def check_sale_date_is_not_smaller_than_release_date(automobile):
     return automobile
 
 def print_date(date):
-    if date['day'] < 10:
-        print(f"0{date['day']}.", end = '')
-    else:
-        print(f"{date['day']}.", end = '')
-    if date['month'] < 10:
-        print(f"0{date['month']}.", end = '')
-    else:
-        print(f"{date['month']}.", end = '')
-    print(date['year']) 
+    print(str(date['day']).zfill(2) + '.', end = '')
+    print(str(date['month']).zfill(2) + '.', end = '')
+    print(str(date['year']).zfill(4) + '.')
 
 def create_automobile_list():
     n = int(input("Enter number of the automobiles: "))

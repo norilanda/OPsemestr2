@@ -65,15 +65,11 @@ void check_sale_date_is_not_smaller_than_release_date(Automobile& automobile)
 
 void print_date(Date date)
 {
-	if (date.day < 10)
-		cout << "0" << date.day << ".";
-	else
-		cout << date.day << ".";
-	if (date.month < 10)
-		cout << "0" << date.month << ".";
-	else
-		cout << date.month << ".";
-	cout << date.year;
+	cout.fill('0');
+	cout.width(2); cout << date.day << ".";
+	cout.width(2); cout << date.month << ".";
+	cout.width(4); cout << date.year;
+	cout.fill(' ');
 }
 
 vector <Automobile> create_automobile_list()
