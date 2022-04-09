@@ -15,6 +15,18 @@ def print_automobile(automobile):
     print("Sale date: ", end = '')
     print_date(automobile['sale_date'])
 
+def calc_max_day(month, year):
+    MAXDAY = 31
+    if month == 4 or month == 6 or month == 9 or month == 11:
+        MAXDAY = 30
+    elif month == 2:
+        if year % 4 == 0:
+            MAXDAY = 29
+        else:
+            MAXDAY = 28
+    return MAXDAY
+
+
 def init_date(type_of_data):
     str = input(f"Enter {type_of_data} date in this format dd.mm.yyyy: ")
     str = str.split('.')
@@ -23,28 +35,29 @@ def init_date(type_of_data):
        'month' : int(str[1]),
        'year' : int(str[2])
     }
-    MINDATE = 1
-    MAXDAY = 31
+    MINDATE = 1    
     MAXMONTH = 12
+    MAXDAY = calc_max_day(date['month'], date['year'])
     while date['day'] < MINDATE or date['day']> MAXDAY or date['month'] < MINDATE or date['month']> MAXMONTH or date['year'] < MINDATE:
         str = input("Your date is incorrect! Try again! Enter date in format dd.mm.yyyy: ")
         str = str.split('.')
         date['day'] = int(str[0])
         date['month'] = int(str[1])
         date['year'] = int(str[2])
+        MAXDAY = calc_max_day(date['month'], date['year'])
     return date
 
 def check_sale_date_is_not_smaller_than_release_date(automobile):
-    year_factor = 365
-    month_factor = 31
-    release_days = automobile['release_date']['day'] + automobile['release_date']['month']*month_factor + automobile['release_date']['year']*year_factor
-    sale_days = automobile['sale_date']['day'] + automobile['sale_date']['month']*month_factor + automobile['sale_date']['year']*year_factor
+    y_factor = 380
+    m_factor = 31
+    release_days = automobile['release_date']['day'] + automobile['release_date']['month']*m_factor + automobile['release_date']['year']*y_factor
+    sale_days = automobile['sale_date']['day'] + automobile['sale_date']['month']*m_factor + automobile['sale_date']['year']*y_factor
     while sale_days < release_days:
         print("Sale date can't be smaller than release date. Please, enter correct dates.")
         automobile['release_date'] = init_date("release")
         automobile['sale_date'] = init_date("sale")
-        release_days = automobile['release_date']['day'] + automobile['release_date']['month']*month_factor + automobile['release_date']['year']*year_factor
-        sale_days = automobile['sale_date']['day'] + automobile['sale_date']['month']*month_factor + automobile['sale_date']['year']*year_factor
+        release_days = automobile['release_date']['day'] + automobile['release_date']['month']*m_factor + automobile['release_date']['year']*y_factor
+        sale_days = automobile['sale_date']['day'] + automobile['sale_date']['month']*m_factor + automobile['sale_date']['year']*y_factor
     return automobile
 
 def print_date(date):
@@ -52,24 +65,12 @@ def print_date(date):
     print(str(date['month']).zfill(2) + '.', end = '')
     print(str(date['year']).zfill(4) + '.')
 
-def create_automobile_list():
-    n = int(input("Enter number of the automobiles: "))
-    print()
-    automobile_list = []
-    for i in range(n):
-        automobile = init_automobile()
-        automobile_list.append(automobile)
-        print()
-    print("----------------------------------------\n")
-    return automobile_list
-
 def is_less_than_two_month_between_release_and_sale(automobile):
-    MAXMONTH = 12
     is_less = False
     year_difference = automobile['sale_date']['year'] - automobile['release_date']['year']
     month_difference = 3    
     if year_difference == 1:
-        month_difference = MAXMONTH - automobile['release_date']['month'] + automobile['sale_date']['month']
+        month_difference = 12 - automobile['release_date']['month'] + automobile['sale_date']['month']
     elif year_difference == 0:
         month_difference = automobile['sale_date']['month'] - automobile['release_date']['month']
     if month_difference == 2:
@@ -78,10 +79,3 @@ def is_less_than_two_month_between_release_and_sale(automobile):
     elif month_difference < 2:
         is_less = True
     return is_less
-
-def create_list_of_two_month_automobile(old_list):
-    new_list = []
-    for automobile in old_list:
-        if is_less_than_two_month_between_release_and_sale(automobile):
-            new_list.append(automobile)
-    return new_list

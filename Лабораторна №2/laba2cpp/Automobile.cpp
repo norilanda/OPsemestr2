@@ -8,10 +8,8 @@ Automobile init_automobile()
 	Automobile automobile;
 	cout << "Enter automobile's name: ";
 	cin.getline(automobile.name, sizeof(automobile.name));
-	cout << "Enter release date in this format dd.mm.yyyy: ";
-	automobile.releaseDate = init_date();
-	cout << "Enter sale date in this format dd.mm.yyyy: ";
-	automobile.saleDate = init_date();
+	automobile.releaseDate = init_date("Release");
+	automobile.saleDate = init_date("Sale");
 	check_sale_date_is_not_smaller_than_release_date(automobile);
 	return automobile;
 }
@@ -26,40 +24,41 @@ void print_automobile(Automobile automobile)
 	cout << endl;
 }
 
-Date init_date()
+Date init_date(string dateType)
 {
 	Date date;
-	cin >> date.day; cin.ignore();
-	cin >> date.month; cin.ignore();
-	cin >> date.year; cin.ignore();
 	const int MINDATE = 1;
-	const int MAXDAY = 31;
 	const int MAXMONTH = 12;
-	while (date.day < MINDATE || date.day>MAXDAY || date.month < MINDATE || date.month> MAXMONTH || date.year < MINDATE)
+	int MAXDAY;
+	do
 	{
-		cout << "Your date is incorrect! Try again! Enter date in format dd.mm.yyyy: ";
+		cout << dateType <<" date dd.mm.yyyy:  ";
 		cin >> date.day; cin.ignore();
 		cin >> date.month; cin.ignore();
 		cin >> date.year; cin.ignore();
-	}
+		if (date.month == 4 || date.month == 6 || date.month == 9 || date.month == 11)
+			MAXDAY = 30;
+		else if (date.month == 2)
+			MAXDAY = (date.year % 4) == 0 ? 29 : 28;
+		else
+			MAXDAY = 31;
+	} while (date.day < MINDATE || date.day>MAXDAY || date.month < MINDATE || date.month> MAXMONTH || date.year < MINDATE);
 	return date;
 }
 
 void check_sale_date_is_not_smaller_than_release_date(Automobile& automobile)
 {
-	int year_factor = 365;
-	int month_factor = 31;
-	int release_days = automobile.releaseDate.day + automobile.releaseDate.month * month_factor + automobile.releaseDate.year * year_factor;
-	int sale_days = automobile.saleDate.day + automobile.saleDate.month * month_factor + automobile.saleDate.year * year_factor;
+	const int YFactor = 380;
+	const int MFACTOR = 31;
+	int release_days = automobile.releaseDate.day + automobile.releaseDate.month * MFACTOR + automobile.releaseDate.year * YFactor;
+	int sale_days = automobile.saleDate.day + automobile.saleDate.month * MFACTOR + automobile.saleDate.year * YFactor;
 	while (sale_days < release_days)
 	{
 		cout << "Sale date can't be smaller than release date. Please, enter correct dates.\n";
-		cout << "Release date dd.mm.yyyy: ";
-		automobile.releaseDate = init_date();
-		cout << "Sale date dd.mm.yyyy: ";
-		automobile.saleDate = init_date();
-		release_days = automobile.releaseDate.day + automobile.releaseDate.month * month_factor + automobile.releaseDate.year * year_factor;
-		sale_days = automobile.saleDate.day + automobile.saleDate.month * month_factor + automobile.saleDate.year * year_factor;
+		automobile.releaseDate = init_date("Release");
+		automobile.saleDate = init_date("Sale");
+		release_days = automobile.releaseDate.day + automobile.releaseDate.month * MFACTOR + automobile.releaseDate.year * YFactor;
+		sale_days = automobile.saleDate.day + automobile.saleDate.month * MFACTOR + automobile.saleDate.year * YFactor;
 	}
 }
 
@@ -72,36 +71,13 @@ void print_date(Date date)
 	cout.fill(' ');
 }
 
-vector <Automobile> create_automobile_list()
-{
-	int n;
-	std::vector <Automobile> automobileList;
-	cout << "Enter number of the automobiles: ";
-	cin >> n; cin.ignore();
-	cout << endl;
-	while (n < 0)
-	{
-		cout << "Number of the automobiles can't be negative. Try again! ";
-		cin >> n; cin.ignore();
-	}
-	for (int i = 0; i < n; i++)
-	{
-		Automobile automobile = init_automobile();
-		automobileList.push_back(automobile);
-		cout << endl;
-	}
-	cout << "--------------------------------------------------\n";
-	return automobileList;
-}
-
 bool is_less_than_two_month_between_release_and_sale(Automobile automobile)
 {
-	const int MAXMONTH = 12;
 	bool isLess = false;
 	int yearDifference = automobile.saleDate.year - automobile.releaseDate.year;
 	int monthDifference = 3;
 	if (yearDifference == 1)
-		monthDifference = MAXMONTH - automobile.releaseDate.month + automobile.saleDate.month;
+		monthDifference = 12 - automobile.releaseDate.month + automobile.saleDate.month;
 	else if (yearDifference == 0)
 		monthDifference = automobile.saleDate.month - automobile.releaseDate.month;
 	if (monthDifference == 2)
@@ -112,15 +88,4 @@ bool is_less_than_two_month_between_release_and_sale(Automobile automobile)
 	else if(monthDifference < 2)
 		isLess = true;
 	return isLess;
-}
-
-vector <Automobile> create_list_of_two_month_automobile(vector <Automobile> oldList)
-{
-	vector <Automobile> newList;
-	for (int i = 0; i < oldList.size(); i++)
-	{
-		if(is_less_than_two_month_between_release_and_sale(oldList[i]))
-			newList.push_back(oldList[i]);
-	}
-	return newList;
 }

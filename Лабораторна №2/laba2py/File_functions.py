@@ -1,5 +1,5 @@
 import pickle
-from Automobile import create_automobile_list, create_list_of_two_month_automobile, print_automobile
+from Automobile import init_automobile, print_automobile, is_less_than_two_month_between_release_and_sale
 
 def choose_file_mode():
     print("Do you want to create a new file or just to add new information?")
@@ -14,7 +14,13 @@ def write_automobiles_into_file(path):
         out_file = open(path, 'wb')
     else:
         out_file = open(path, 'ab')
-    automobile_list = create_automobile_list()
+    n = int(input("Enter number of the automobiles: "))
+    print()
+    automobile_list = []
+    for i in range(n):
+        automobile = init_automobile()
+        automobile_list.append(automobile)
+        print()
     for automobile in automobile_list:
         pickle.dump(automobile, out_file)
     out_file.close()
@@ -37,8 +43,15 @@ def display_file_information(path):
         print()
 
 def write_new_file_of_automobile(path_old, path_new):
-    current_list = read_file_into_list(path_old)
-    new_list = create_list_of_two_month_automobile(current_list)
+    new_list = []
+    with open(path_old, 'rb') as in_file:
+        in_file.seek(0, 2)
+        end_of_file = in_file.tell()
+        in_file.seek(0, 0)
+        while in_file.tell() != end_of_file:
+            automobile = pickle.load(in_file)
+            if is_less_than_two_month_between_release_and_sale(automobile):
+                new_list.append(automobile)   
     with open(path_new, 'wb') as out_file:
         for automobile in new_list:
             pickle.dump(automobile, out_file)

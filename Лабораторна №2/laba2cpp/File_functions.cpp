@@ -7,8 +7,7 @@ using namespace std;
 
 char choose_file_mode()
 {
-	cout << "Do you want to create a new file or just to add new information?\n"
-		<<" To create a new file enter 'n', to add information enter 'a': ";
+	cout << "Do you want to create a new file or just to add new information?\nTo create a new file enter 'n', to add information enter 'a': ";
 	char answer; cin >> answer;
 	while (answer != 'a' && answer != 'n')
 	{
@@ -30,7 +29,16 @@ void write_automobiles_into_file(string path)
 		cout << "Cannot open the file!\n";
 	else
 	{
-		vector <Automobile> automobileList = create_automobile_list();
+		int n;
+		vector <Automobile> automobileList;
+		cout << "Enter number of the automobiles: ";
+		cin >> n; cin.ignore(); cout << endl;
+		for (int i = 0; i < n; i++)
+		{
+			Automobile automobile = init_automobile();
+			automobileList.push_back(automobile);
+			cout << endl;
+		}
 		for (int i = 0; i < automobileList.size(); i++)
 			outFile.write((char*)&automobileList[i], sizeof(Automobile));
 	}
@@ -65,8 +73,18 @@ void display_file_information(string path)
 
 void write_new_file_of_automobile(string pathOld, string pathNew)
 {
-	vector <Automobile> currentList = read_file_into_list(pathOld);
-	vector <Automobile> newtList = create_list_of_two_month_automobile(currentList);
+	vector <Automobile> newtList;
+	ifstream inFile(pathOld, ios::binary);
+	if (!inFile.is_open())
+		cout << "Cannot open the file!\n";
+	else
+	{
+		Automobile automobile;
+		while (inFile.read((char*)&automobile, sizeof(Automobile)))
+			if (is_less_than_two_month_between_release_and_sale(automobile))
+				newtList.push_back(automobile);
+	}
+	inFile.close();
 	ofstream outFile(pathNew, ios::binary);
 	if (!outFile.is_open())
 		cout << "Cannot open the file!\n";
