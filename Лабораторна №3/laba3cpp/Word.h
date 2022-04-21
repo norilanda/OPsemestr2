@@ -10,12 +10,13 @@ class Word
 {
 	string word;
 public:
+	Word();
 	Word(string word);
 	string get_word();
 	int calc_digits();
 	//перевірити чи слово є словом
 };
 bool is_word(string str);
-vector<Word> create_arr(int n);
-void print_arr(vector<Word>arr);
-int word_with_max_number_of_digits(vector<Word>arr);
+vector <Word> create_arr(int n);
+void print_arr(vector <Word> arr);
+vector <Word> word_with_max_number_of_digits(vector <Word> arr);
