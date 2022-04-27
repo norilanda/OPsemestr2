@@ -11,7 +11,7 @@ int main()
     cin >> n; cin.ignore();
     cout << "Enter your words. You can not use any delimeters exept hyphen(-), apostrophe(') and stress(`)\n";
     vector <Word>arr = create_arr(n);
-    cout << "The words in the array:\n";
+    cout << "\nThe words in the array:\n";
     print_arr(arr);
     vector <Word> maxDigitWords = word_with_max_number_of_digits(arr);
     if (maxDigitWords.empty())

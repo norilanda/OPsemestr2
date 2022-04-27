@@ -1,7 +1,7 @@
 #include "Word.h"
 using namespace std;
 
-Word::Word() { cout << "Object is created\n"; }
+Word::Word() {}
 Word::Word(string word)
 { 
 	this->word = word;
@@ -23,7 +23,7 @@ int Word::calc_digits()
 bool is_word(string str)
 {
 	string acceptDelim = "'-`";
-	bool isWord = true;
+	bool isWord = str.empty() ? false : true;
 	int i = 0;
 	while (isWord && i < str.length())
 	{
@@ -43,7 +43,6 @@ bool is_word(string str)
 vector<Word> create_arr(int n)
 {
 	vector <Word> arr(n);
-
 	for (int i = 0; i < n; i++)
 	{
 		cout << "Enter word: ";
