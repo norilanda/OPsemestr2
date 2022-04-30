@@ -2,5 +2,5 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    srand(time(0));
 }
