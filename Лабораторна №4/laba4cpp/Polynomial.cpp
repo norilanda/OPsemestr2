@@ -19,6 +19,18 @@ Polynomial::Polynomial(int rangeMin, int rangeMax)
 	c2 = 
 	c3 =*/
 }
+double Polynomial::get_c0(){
+	return c0;
+}
+double Polynomial::get_c1() {
+	return c1;
+}
+double Polynomial::get_c2() {
+	return c2;
+}
+double Polynomial::get_c3() {
+	return c3;
+}
 double Polynomial::calculate_polynomial(double x)
 {
 	return c0 + c1 * x + c2 * pow(x, 2) + c3 * pow(x, 3);
