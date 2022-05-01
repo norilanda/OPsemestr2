@@ -68,3 +68,9 @@ void init_coefficients(double& c0, double& c1, double& c2, double& c3)
 	cout << "c2: "; cin >> c2;
 	cout << "c3: "; cin >> c3;
 }
+void intit_range(double& rangeMin, double& rangeMax)
+{
+	cout << "Enter the range for generating coefficients\n";
+	cout << "Minimum number of the range: "; cin >> rangeMin;
+	cout << "Maximum number of the range: "; cin >> rangeMax;
+}

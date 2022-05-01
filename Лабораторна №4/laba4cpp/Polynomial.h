@@ -27,3 +27,4 @@ public:
 };
 
 void init_coefficients(double& c0, double& c1, double& c2, double& c3);
+void intit_range(double& rangeMin, double& rangeMax);
