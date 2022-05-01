@@ -11,13 +11,19 @@ Polynomial::Polynomial(double c0, double c1, double c2, double c3)
 	this->c2 = c2;
 	this->c3 = c3;
 }
-Polynomial::Polynomial(int rangeMin, int rangeMax)
+Polynomial::Polynomial(double rangeMin, double rangeMax, int decimalPlaces = 0)
 {
 	//FINISH !!!
-	c0 = rand() % rangeMax - rangeMin + 1;
-	/*c1 = 
-	c2 = 
-	c3 =*/
+	c0 = generate_number(rangeMin, rangeMax, decimalPlaces);
+	c1 = generate_number(rangeMin, rangeMax, decimalPlaces);
+	c2 = generate_number(rangeMin, rangeMax, decimalPlaces);
+	c3 = generate_number(rangeMin, rangeMax, decimalPlaces);
+}
+double Polynomial::generate_number(double rangeMin, double rangeMax, int decimalPlaces)
+{
+	double number = ((double)rand() / RAND_MAX) * (rangeMax - rangeMin) + rangeMin;
+	int coefficient = pow(10, decimalPlaces);
+	return round(number * coefficient) / coefficient;
 }
 double Polynomial::get_c0(){
 	return c0;
