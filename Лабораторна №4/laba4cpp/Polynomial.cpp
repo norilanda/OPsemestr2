@@ -1,7 +1,7 @@
 #include "Polynomial.h"
 #include <cmath>
 #include <iostream>
-#include <cstdlib>
+#include <stdlib.h>    
 
 using namespace std;
 
@@ -13,19 +13,17 @@ Polynomial::Polynomial(double c0, double c1, double c2, double c3)
 	this->c2 = c2;
 	this->c3 = c3;
 }
-Polynomial::Polynomial(double rangeMin, double rangeMax, int decimalPlaces = 0)
+Polynomial::Polynomial(int rangeMin, int rangeMax)
 {
-	//FINISH !!!
-	c0 = generate_number(rangeMin, rangeMax, decimalPlaces);
-	c1 = generate_number(rangeMin, rangeMax, decimalPlaces);
-	c2 = generate_number(rangeMin, rangeMax, decimalPlaces);
-	c3 = generate_number(rangeMin, rangeMax, decimalPlaces);
+	c0 = generate_number(rangeMin, rangeMax);
+	c1 = generate_number(rangeMin, rangeMax);
+	c2 = generate_number(rangeMin, rangeMax);
+	c3 = generate_number(rangeMin, rangeMax);
 }
-double Polynomial::generate_number(double rangeMin, double rangeMax, int decimalPlaces)
+int Polynomial::generate_number(double rangeMin, double rangeMax)
 {
-	double number = ((double)rand() / RAND_MAX) * (rangeMax - rangeMin) + rangeMin;
-	int coefficient = pow(10, decimalPlaces);
-	return round(number * coefficient) / coefficient;
+	int number = ((double)rand() / RAND_MAX) * (rangeMax - rangeMin) + rangeMin;
+	return number;
 }
 double Polynomial::get_c0() { return c0; }
 double Polynomial::get_c1() { return c1; }
@@ -45,6 +43,7 @@ Polynomial Polynomial::operator+=(double number)
 	c1 += number;
 	c2 += number;
 	c3 += number;
+	return *this;
 }
 Polynomial Polynomial::operator-=(double number)
 {
@@ -52,6 +51,7 @@ Polynomial Polynomial::operator-=(double number)
 	c1 -= number;
 	c2 -= number;
 	c3 -= number;
+	return *this;
 }
 bool Polynomial::operator==(Polynomial polynomial)
 {

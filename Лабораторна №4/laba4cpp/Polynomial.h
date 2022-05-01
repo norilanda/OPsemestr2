@@ -7,12 +7,12 @@ class Polynomial
 	double c1;
 	double c2;
 	double c3;
-	double generate_number(double rangeMin, double rangeMax, int decimalPlaces);
+	int generate_number(double rangeMin, double rangeMax);
 public:
 	//конструкторu
 	Polynomial();
 	Polynomial(double c0, double c1, double c2, double c3);
-	Polynomial(double rangeMin, double rangeMax, int decimalPlaces = 0);
+	Polynomial(int rangeMin, int rangeMax);
 	//гетери
 	double get_c0();
 	double get_c1();
