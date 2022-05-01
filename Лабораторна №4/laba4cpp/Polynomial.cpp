@@ -5,6 +5,7 @@
 
 using namespace std;
 
+Polynomial::Polynomial(): c0(1), c1(1), c2(1), c3(1) {}
 Polynomial::Polynomial(double c0, double c1, double c2, double c3)
 {
 	this->c0 = c0;

@@ -10,6 +10,7 @@ class Polynomial
 	double generate_number(double rangeMin, double rangeMax, int decimalPlaces);
 public:
 	//конструкторu
+	Polynomial();
 	Polynomial(double c0, double c1, double c2, double c3);
 	Polynomial(double rangeMin, double rangeMax, int decimalPlaces = 0);
 	//гетери
