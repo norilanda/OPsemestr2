@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+
+using std::string;
 
 //конструктори, гетери, метод обчислення значення в конкретній точці. Перевантажити +=, -+, ==
 class Polynomial
@@ -8,6 +11,7 @@ class Polynomial
 	double c2;
 	double c3;
 	int generate_number(double rangeMin, double rangeMax);
+	static string convert_double_to_stirng(double n);
 public:
 	//конструкторu
 	Polynomial();
@@ -18,7 +22,7 @@ public:
 	double get_c1();
 	double get_c2();
 	double get_c3();
-	void display();
+	string get_polynomial_as_string();
 	double calculate_polynomial(double x);
 	//operators
 	Polynomial operator+=(double number);

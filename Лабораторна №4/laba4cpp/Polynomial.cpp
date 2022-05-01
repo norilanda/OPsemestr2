@@ -29,9 +29,20 @@ double Polynomial::get_c0() { return c0; }
 double Polynomial::get_c1() { return c1; }
 double Polynomial::get_c2() { return c2; }
 double Polynomial::get_c3() { return c3; }
-void Polynomial::display()
+string Polynomial::convert_double_to_stirng(double n)
 {
-	cout << c0 << " + " << c1 << "x + " << c2 << "x^2 + " << c3 << "x^3" << "\n";
+	string str = to_string(n);
+	size_t pos = str.find_last_not_of('0') + 1;
+	str = str.erase(pos);
+	size_t lastPos = str.length() - 1;
+	if (str[lastPos]=='.')
+		str = str.erase(lastPos);
+	return str;
+}
+string Polynomial::get_polynomial_as_string()
+{
+	string polynomial_string = convert_double_to_stirng(c0 )+ " + " + convert_double_to_stirng(c1) + "x + " + convert_double_to_stirng(c2) + "x^2 + " + convert_double_to_stirng(c3) + "x^3" + "\n";
+	return polynomial_string;
 }
 double Polynomial::calculate_polynomial(double x)
 {

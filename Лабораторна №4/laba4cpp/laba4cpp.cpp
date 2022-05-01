@@ -14,10 +14,21 @@ int main()
     intit_range(min, max);
     Polynomial P3(min, max);
     cout << "\nPolynomials\n";
-    cout << "P1: ";
-    P1.display();
-    cout << "P2: ";
-    P2.display();
-    cout << "P3: ";
-    P3.display();
+    cout << "P1: " << P1.get_polynomial_as_string();
+    cout << "P2: " << P2.get_polynomial_as_string();
+    cout << "P3: " << P3.get_polynomial_as_string();
+    cout << "\nEnter number to increase/decrease polynomials: ";
+    double n; cin >> n;
+    P1 += n;
+    P2 -= n;
+    cout << "\nNew polynomials increased/decreased by " << n << "\n";
+    cout << "P1: " << P1.get_polynomial_as_string();
+    cout << "P2: " << P2.get_polynomial_as_string();
+    if (P1 == P2)
+        cout << "Coefficients of P1 and P2 are equal\n";
+    else
+        cout << "Coefficients of P1 and P2 are NOT equal\n";
+    cout << "\nEnter x to calculate P3: ";
+    double x; cin >> x;
+    cout << "Value of the P3 at the point x = " << P3.calculate_polynomial(x) << "\n";
 }
