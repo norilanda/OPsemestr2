@@ -26,18 +26,10 @@ double Polynomial::generate_number(double rangeMin, double rangeMax, int decimal
 	int coefficient = pow(10, decimalPlaces);
 	return round(number * coefficient) / coefficient;
 }
-double Polynomial::get_c0(){
-	return c0;
-}
-double Polynomial::get_c1() {
-	return c1;
-}
-double Polynomial::get_c2() {
-	return c2;
-}
-double Polynomial::get_c3() {
-	return c3;
-}
+double Polynomial::get_c0(){ return c0; }
+double Polynomial::get_c1() { return c1; }
+double Polynomial::get_c2() { return c2; }
+double Polynomial::get_c3() { return c3; }
 void Polynomial::display()
 {
 	cout << c0 << " + " << c1 << "x + " << c2 << "x^2 + " << c3 << "x^3" << "\n";
