@@ -60,3 +60,9 @@ Polynomial Polynomial::operator-=(double number)
 	c2 -= number;
 	c3 -= number;
 }
+bool Polynomial::operator==(Polynomial polynomial)
+{
+	if (c0 == polynomial.c0 && c1 == polynomial.c1 && c2 == polynomial.c2 && c3 == polynomial.c3)
+		return true;
+	return false;
+}

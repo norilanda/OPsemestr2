@@ -22,4 +22,5 @@ public:
 	//operators
 	Polynomial operator+=(double number);
 	Polynomial operator-=(double number);
+	bool operator==(Polynomial polynomial);
 };
