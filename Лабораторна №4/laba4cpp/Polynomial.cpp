@@ -27,7 +27,7 @@ double Polynomial::generate_number(double rangeMin, double rangeMax, int decimal
 	int coefficient = pow(10, decimalPlaces);
 	return round(number * coefficient) / coefficient;
 }
-double Polynomial::get_c0(){ return c0; }
+double Polynomial::get_c0() { return c0; }
 double Polynomial::get_c1() { return c1; }
 double Polynomial::get_c2() { return c2; }
 double Polynomial::get_c3() { return c3; }
@@ -58,4 +58,13 @@ bool Polynomial::operator==(Polynomial polynomial)
 	if (c0 == polynomial.c0 && c1 == polynomial.c1 && c2 == polynomial.c2 && c3 == polynomial.c3)
 		return true;
 	return false;
+}
+
+void init_coefficients(double& c0, double& c1, double& c2, double& c3)
+{
+	cout << "Enter 4 numbers to initiate coefficients\n";
+	cout << "c0: "; cin >> c0;
+	cout << "c1: "; cin >> c1;
+	cout << "c2: "; cin >> c2;
+	cout << "c3: "; cin >> c3;
 }

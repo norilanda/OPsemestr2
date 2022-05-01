@@ -25,3 +25,5 @@ public:
 	Polynomial operator-=(double number);
 	bool operator==(Polynomial polynomial);
 };
+
+void init_coefficients(double& c0, double& c1, double& c2, double& c3);
