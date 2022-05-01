@@ -17,5 +17,9 @@ public:
 	double get_c1();
 	double get_c2();
 	double get_c3();
+	void display();
 	double calculate_polynomial(double x);
+	//operators
+	Polynomial operator+=(double number);
+	Polynomial operator-=(double number);
 };

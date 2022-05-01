@@ -1,5 +1,6 @@
 #include "Polynomial.h"
 #include <cmath>
+#include <iostream>
 #include <cstdlib>
 
 using namespace std;
@@ -37,7 +38,25 @@ double Polynomial::get_c2() {
 double Polynomial::get_c3() {
 	return c3;
 }
+void Polynomial::display()
+{
+	cout << c0 << " + " << c1 << "x + " << c2 << "x^2 + " << c3 << "x^3" << "\n";
+}
 double Polynomial::calculate_polynomial(double x)
 {
 	return c0 + c1 * x + c2 * pow(x, 2) + c3 * pow(x, 3);
+}
+Polynomial Polynomial::operator+=(double number)
+{
+	c0 += number;
+	c1 += number;
+	c2 += number;
+	c3 += number;
+}
+Polynomial Polynomial::operator-=(double number)
+{
+	c0 -= number;
+	c1 -= number;
+	c2 -= number;
+	c3 -= number;
 }
