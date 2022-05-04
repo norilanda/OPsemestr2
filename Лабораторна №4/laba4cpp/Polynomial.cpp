@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Polynomial::Polynomial(): c0(1), c1(1), c2(1), c3(1) {}
+Polynomial::Polynomial(double c): c0(c), c1(c), c2(c), c3(c) {}
 Polynomial::Polynomial(double c0, double c1, double c2, double c3)
 {
 	this->c0 = c0;
@@ -20,7 +20,7 @@ Polynomial::Polynomial(int rangeMin, int rangeMax)
 	c2 = generate_number(rangeMin, rangeMax);
 	c3 = generate_number(rangeMin, rangeMax);
 }
-int Polynomial::generate_number(double rangeMin, double rangeMax)
+int Polynomial::generate_number(int rangeMin, int rangeMax)
 {
 	int number = ((double)rand() / RAND_MAX) * (rangeMax - rangeMin) + rangeMin;
 	return number;
@@ -41,7 +41,7 @@ string Polynomial::convert_double_to_stirng(double n)
 }
 string Polynomial::get_polynomial_as_string()
 {
-	string polynomial_string = convert_double_to_stirng(c0 )+ " + " + convert_double_to_stirng(c1) + "x + " + convert_double_to_stirng(c2) + "x^2 + " + convert_double_to_stirng(c3) + "x^3" + "\n";
+	string polynomial_string = convert_double_to_stirng(c0)+ " + " + convert_double_to_stirng(c1) + "x + " + convert_double_to_stirng(c2) + "x^2 + " + convert_double_to_stirng(c3) + "x^3" + "\n";
 	return polynomial_string;
 }
 double Polynomial::calculate_polynomial(double x)
@@ -79,7 +79,7 @@ void init_coefficients(double& c0, double& c1, double& c2, double& c3)
 	cout << "c2: "; cin >> c2;
 	cout << "c3: "; cin >> c3;
 }
-void intit_range(double& rangeMin, double& rangeMax)
+void intit_range(int& rangeMin, int& rangeMax)
 {
 	cout << "Enter the range for generating coefficients\n";
 	cout << "Minimum number of the range: "; cin >> rangeMin;
