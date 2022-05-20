@@ -72,13 +72,14 @@ void R3::display()
 }
 bool R3::is_parallel(TVector* ptrTVector)
 {
-	if ((x / ptrTVector->x) == (y / ((R3*)ptrTVector)->y) == (z / ((R3*)ptrTVector)->z))
+	double k = (x / ptrTVector->x);
+	if (k == (y / ((R3*)ptrTVector)->y) && k == (z / ((R3*)ptrTVector)->z))
 		return true;
 	return false;
 }
 bool R3::is_perpendicular(TVector* ptrTVector)
 {
-	double dotProduct = x * ptrTVector->x + y * ((R3*)ptrTVector)->y + ((R3*)ptrTVector)->z;
+	double dotProduct = x * ptrTVector->x + y * ((R3*)ptrTVector)->y + z * ((R3*)ptrTVector)->z;
 	return !dotProduct;
 }
 double R3::calc_length()

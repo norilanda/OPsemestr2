@@ -8,9 +8,9 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-    R2 r(1.0, 0.0);
-    R2 r1(0.0, 1.0);
-    r.display();
+    R3 r(1.0, 0.0, -1.0);
+    R3 r1(2.0, 8.0, 2.0);
+    r.display(); cout << "\n";
     r1.display();
     TVector* basePtr;
     basePtr = &r1;
