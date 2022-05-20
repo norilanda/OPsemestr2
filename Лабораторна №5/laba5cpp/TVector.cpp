@@ -37,7 +37,7 @@ void R2::display()
 	TVector::display();
 	cout << y << "; ";
 }
-bool R2::is_parallel(TVector& v)
+bool R2::is_parallel(R2& v)
 {
 	return true;
 }
@@ -47,5 +47,17 @@ bool R2::is_perpendicular(TVector& v)
 }
 double R2::calc_length()
 {
-	return 0;
+	return sqrt(pow(x, 2) + pow(y, 2));
+}
+
+
+R3::R3(double x, double y, double z) : TVector(x)
+{
+	this->y = y;
+	this->z = z;
+}
+R3::R3(int rangeMin = -5, int rangeMax = 5) : TVector(rangeMin, rangeMax)
+{
+	y = generate_number(rangeMin, rangeMax);
+	z = generate_number(rangeMin, rangeMax);
 }

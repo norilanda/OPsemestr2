@@ -8,8 +8,10 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-    R2 r;
-    R2 r1(2.3, -0.44);
-    r.display(); cout << endl;
+  
+    R2 r1(4.0, -3.0);
+   
     r1.display();
+    cout << r1.calc_length();
+    //cout << r.is_parallel(r1);
 }
