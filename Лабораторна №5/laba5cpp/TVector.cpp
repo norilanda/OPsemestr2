@@ -37,13 +37,16 @@ void R2::display()
 	TVector::display();
 	cout << y << "; ";
 }
-bool R2::is_parallel(R2& v)
+bool R2::is_parallel(TVector* ptrTVector)
 {
-	return true;
+	if ((x / ptrTVector->x) == (y / ((R2*)ptrTVector)->y))
+		return true;
+	return false;
 }
-bool R2::is_perpendicular(TVector& v)
+bool R2::is_perpendicular(TVector* ptrTVector)
 {
-	return true;
+	double dotProduct = x * ptrTVector->x + y * ((R2*)ptrTVector)->y;
+	return !dotProduct;
 }
 double R2::calc_length()
 {
@@ -56,8 +59,29 @@ R3::R3(double x, double y, double z) : TVector(x)
 	this->y = y;
 	this->z = z;
 }
-R3::R3(int rangeMin = -5, int rangeMax = 5) : TVector(rangeMin, rangeMax)
+R3::R3(int rangeMin, int rangeMax) : TVector(rangeMin, rangeMax)
 {
 	y = generate_number(rangeMin, rangeMax);
 	z = generate_number(rangeMin, rangeMax);
+}
+
+void R3::display()
+{
+	TVector::display();
+	cout << y << "; " << z << "; ";
+}
+bool R3::is_parallel(TVector* ptrTVector)
+{
+	if ((x / ptrTVector->x) == (y / ((R3*)ptrTVector)->y) == (z / ((R3*)ptrTVector)->z))
+		return true;
+	return false;
+}
+bool R3::is_perpendicular(TVector* ptrTVector)
+{
+	double dotProduct = x * ptrTVector->x + y * ((R3*)ptrTVector)->y + ((R3*)ptrTVector)->z;
+	return !dotProduct;
+}
+double R3::calc_length()
+{
+	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
