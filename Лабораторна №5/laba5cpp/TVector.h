@@ -9,6 +9,8 @@ public:
 	//constructors
 	TVector(double x);
 	TVector(int rangeMin = -5, int rangeMax = 5);
+	//methods
+	void display();
 	// паралельн≥сть
 	// перпендикул€рн≥сть
 	// метод визначенн€ довжини

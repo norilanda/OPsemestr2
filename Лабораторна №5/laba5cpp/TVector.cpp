@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <stdlib.h>     /* srand, rand */
 #include "TVector.h"
 
 using namespace std;
@@ -14,6 +15,10 @@ TVector::TVector(int rangeMin, int rangeMax)
 }
 int TVector::generate_number(int rangeMin, int rangeMax)
 {
-	int number = ((double)rand() / RAND_MAX) * (rangeMax - rangeMin) + rangeMin;
+	int number = rand() % (rangeMax - rangeMin) + rangeMin;
 	return number;
+}
+void TVector::display()
+{
+	cout << x << " ; ";
 }
