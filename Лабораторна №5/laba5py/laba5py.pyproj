@@ -23,6 +23,7 @@
   <ItemGroup>
     <Compile Include="laba5py.py" />
     <Compile Include="TVector.py" />
+    <Compile Include="Work_with_vectors.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
