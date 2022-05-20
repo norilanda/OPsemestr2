@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="laba5cpp.cpp" />
     <ClCompile Include="TVector.cpp" />
+    <ClCompile Include="Work_with_vectors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TVector.h" />
+    <ClInclude Include="Work_with_vectors.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

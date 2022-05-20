@@ -21,9 +21,15 @@
     <ClCompile Include="TVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Work_with_vectors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Work_with_vectors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
