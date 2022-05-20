@@ -11,7 +11,7 @@ protected:
 public:
 	//constructors
 	TVector(double x);
-	TVector(int rangeMin = -5, int rangeMax = 5);
+	TVector(int rangeMin = -3, int rangeMax = 3);
 	//methods
 	virtual void display();
 	

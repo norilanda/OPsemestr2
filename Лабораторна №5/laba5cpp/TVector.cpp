@@ -1,10 +1,11 @@
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 #include <stdlib.h>     /* srand, rand */
 #include "TVector.h"
 
 using namespace std;
-
+//vectors
 TVector::TVector(double x)
 {
 	this->x = x;
@@ -20,7 +21,7 @@ int TVector::generate_number(int rangeMin, int rangeMax)
 }
 void TVector::display()
 {
-	cout << x << " ; ";
+	cout << setw(4) << x << " ; ";
 }
 
 
@@ -35,7 +36,7 @@ R2::R2(int rangeMin, int rangeMax) : TVector(rangeMin, rangeMax)
 void R2::display()
 {
 	TVector::display();
-	cout << y << "; ";
+	cout << setw(4) << y << "; ";
 }
 bool R2::is_parallel(TVector* ptrTVector)
 {
@@ -68,7 +69,7 @@ R3::R3(int rangeMin, int rangeMax) : TVector(rangeMin, rangeMax)
 void R3::display()
 {
 	TVector::display();
-	cout << y << "; " << z << "; ";
+	cout << setw(4) << y << "; " << setw(4) << z << "; ";
 }
 bool R3::is_parallel(TVector* ptrTVector)
 {
