@@ -21,6 +21,7 @@ class TVector(ABC):
     def calc_length(self):
         pass
 
+
 class R2(TVector):
     def __init__(self, x, y):
         super(R2, self).__init__(x);
@@ -31,16 +32,41 @@ class R2(TVector):
         print(f"{self.__y}; ", end = '')
 
     def is_parallel(self, vector):
-        if self.x/vector.x == self.__y/vector.y:
+        if self.x/vector.x == self.__y/vector.__y:
             return True
         return False
 
     def is_perpendicular(self, vector):
-        dot_product = self.x * vector.x + self.y * vector.y
+        dot_product = self.x * vector.x + self.__y * vector.__y
         if dot_product == 0:
             return True
         return False
 
     def calc_length(self):        
         return sqrt(self.x ** 2 + self.__y ** 2) 
+
+
+class R3(TVector):
+    def __init__(self, x, y, z):
+        super(R3, self).__init__(x);
+        self.__y = y
+        self.__z = z
+
+    def display(self):
+        super().display()
+        print(f"{self.__y}; {self.__z}; ", end = '')
+
+    def is_parallel(self, vector):
+        if self.x/vector.x == self.__y/vector.__y and self.x/vector.x == self.__z/vector.__z:
+            return True
+        return False
+
+    def is_perpendicular(self, vector):
+        dot_product = self.x * vector.x + self.__y * vector.__y + self.__z * vector.__z
+        if dot_product == 0:
+            return True
+        return False
+
+    def calc_length(self):        
+        return sqrt(self.x ** 2 + self.__y ** 2 + self.__z ** 2) 
       
