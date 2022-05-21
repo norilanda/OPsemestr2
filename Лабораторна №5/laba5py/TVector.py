@@ -24,7 +24,7 @@ class TVector(ABC):
 
 class R2(TVector):
     def __init__(self, x, y):
-        super(R2, self).__init__(x);
+        super().__init__(x);
         self.__y = y
 
     def display(self):
@@ -48,7 +48,7 @@ class R2(TVector):
 
 class R3(TVector):
     def __init__(self, x, y, z):
-        super(R3, self).__init__(x);
+        super().__init__(x);
         self.__y = y
         self.__z = z
 
