@@ -1,13 +1,20 @@
-from TVector import  R2, R3
+from Work_with_vectors import create_arr_of_vectors, display_vector, calc_sum_of_parallels, calc_sum_of_perpendicular
 
 #//division by 0
 
-
-f = R2(0, 5)
-h = R3(1,0,-1)
-j = R3(1, 1, 1)
-f.display()
+n = 3
+m = 4
+arr = create_arr_of_vectors(n, m)
+print("There are R2 and R3 vectors: ")
+display_vector(arr)
 print()
-h.display()
-print(j.is_perpendicular(h))
-print(f.calc_length())
+
+sum_par, arr_par = calc_sum_of_parallels(arr, n)
+print("Vectors which are parallel to the first R2 vector:")
+display_vector(arr_par)
+print(f"Sum of R2 vectors, which are parallel = {sum_par}\n")
+
+sum_perp, arr_perp = calc_sum_of_perpendicular(arr, n, m)
+print("Vectors which are perpendicular to the first R3 vector:")
+display_vector(arr_perp)
+print(f"Sum of R3 vectors, which are perpendicular = {sum_perp}")

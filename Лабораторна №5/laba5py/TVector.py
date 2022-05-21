@@ -32,7 +32,8 @@ class R2(TVector):
         print(f"{self.__y}; ", end = '')
 
     def is_parallel(self, vector):
-        if self.x/vector.x == self.__y/vector.__y:
+        cross_product = self.x * vector.__y - self.__y * vector.x
+        if cross_product == 0:
             return True
         return False
 
@@ -57,7 +58,8 @@ class R3(TVector):
         print(f"{self.__y}; {self.__z}; ", end = '')
 
     def is_parallel(self, vector):
-        if self.x/vector.x == self.__y/vector.__y and self.x/vector.x == self.__z/vector.__z:
+        cross_product = (self.__y * vector.__z - vector.__y * self.__z) - (self.x * vector.__z - vector.x * self.__z) + (self.x * vector.__y - vector.x * self.__y)
+        if cross_product == 0:
             return True
         return False
 
