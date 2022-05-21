@@ -48,24 +48,14 @@ void create_arr_of_vectors(vector <TVector*>& arr, int n, int m)
 		}
 	}
 }
-void display_arr_of_vectors(vector <TVector*> arr, int n, int m)
+
+void display_vector(vector <TVector*> arr, int start , int end)
 {
-	cout << "R2 vectors: \n";
-	for (int i = 0; i < n; i++)
-	{
-		arr[i]->display();
-		cout << "| length = " << arr[i]->calc_length() << "\n";		
-	}
-	cout << "R3 vectors: \n";
-	for (int i = n; i < n + m; i++)
-	{
-		arr[i]->display();
-		cout << "| length = " << arr[i]->calc_length() << "\n";
-	}
-}
-void display_vector(vector <TVector*> arr)
-{
-	for (int i = 0; i < arr.size(); i++)
+	if (end == 0)
+		end = arr.size();
+	if (end == 0)
+		cout << " - ";
+	for (int i = start; i < end; i++)
 	{
 		arr[i]->display();
 		cout << "| length = " << arr[i]->calc_length() << "\n";

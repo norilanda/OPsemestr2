@@ -15,7 +15,10 @@ int main()
 
     vector <TVector*> arr, arrPar, arrPerp;
     create_arr_of_vectors(arr, n, m);
-    display_arr_of_vectors(arr, n, m);
+    cout << "R2: \n";
+    display_vector(arr, 0, n);
+    cout << "R3: \n";
+    display_vector(arr, n);
 
     double parallelSum = calc_sum_of_parallels(arr, n, m, arrPar);
     cout << "\nVectors which are parallel to the first R2 vector:\n";
