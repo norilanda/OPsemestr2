@@ -15,8 +15,8 @@ public:
 	//methods
 	virtual void display();
 	
-	virtual bool is_parallel(TVector* ptrTVector) = 0;
-	virtual bool is_perpendicular(TVector* ptrTVector) = 0;
+	virtual bool is_parallel(TVector* ptr) = 0;
+	virtual bool is_perpendicular(TVector* ptr) = 0;
 	virtual double calc_length() = 0;
 	friend class R2;
 	friend class R3;
@@ -30,8 +30,8 @@ public:
 	R2(int rangeMin = -5, int rangeMax = 5);
 
 	void display();
-	bool is_parallel(TVector* ptrTVector);
-	bool is_perpendicular(TVector* ptrTVector);
+	bool is_parallel(TVector* ptr);
+	bool is_perpendicular(TVector* ptr);
 	double calc_length();
 };
 
@@ -44,7 +44,7 @@ public:
 	R3(int rangeMin = -5, int rangeMax = 5);
 
 	void display();
-	bool is_parallel(TVector* ptrTVector);
-	bool is_perpendicular(TVector* ptrTVector);
+	bool is_parallel(TVector* ptr);
+	bool is_perpendicular(TVector* ptr);
 	double calc_length();
 };
