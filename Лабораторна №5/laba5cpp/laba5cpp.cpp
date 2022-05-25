@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <stdlib.h>     /* srand, rand */
+#include <stdlib.h>
 #include <time.h> 
 #include <vector>
 #include "TVector.h"

@@ -1,6 +1,4 @@
-from Work_with_vectors import create_arr_of_vectors, display_vector, calc_sum_of_parallels, calc_sum_of_perpendicular
-
-#//division by 0
+from Work_with_vectors import *
 
 n = 3
 m = 4

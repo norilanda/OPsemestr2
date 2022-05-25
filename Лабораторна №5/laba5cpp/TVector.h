@@ -1,8 +1,5 @@
 #pragma once
 
-class R2;
-class R3;
-
 class TVector
 {
 protected:
@@ -29,10 +26,10 @@ public:
 	R2(double x, double y);
 	R2(int rangeMin = -5, int rangeMax = 5);
 
-	void display();
-	bool is_parallel(TVector* ptr);
-	bool is_perpendicular(TVector* ptr);
-	double calc_length();
+	void display() override;
+	bool is_parallel(TVector* ptr) override;
+	bool is_perpendicular(TVector* ptr) override;
+	double calc_length() override;
 };
 
 class R3 : public TVector
@@ -43,8 +40,8 @@ public:
 	R3(double x, double y, double z);
 	R3(int rangeMin = -5, int rangeMax = 5);
 
-	void display();
-	bool is_parallel(TVector* ptr);
-	bool is_perpendicular(TVector* ptr);
-	double calc_length();
+	void display() override;
+	bool is_parallel(TVector* ptr) override;
+	bool is_perpendicular(TVector* ptr) override;
+	double calc_length() override;
 };

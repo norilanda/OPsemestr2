@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from math import sqrt
 
 class TVector(ABC):
-    #
+    
     def __init__(self, x):
         self.x = x
 

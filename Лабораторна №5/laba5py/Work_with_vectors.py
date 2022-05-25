@@ -34,7 +34,6 @@ def create_arr_of_vectors(n, m):
             arr.append(R3(x, y, z))
     return arr
 
-#make one function
 
 def display_vector(arr):
     for i in arr:

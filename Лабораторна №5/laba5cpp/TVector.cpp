@@ -1,11 +1,11 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <stdlib.h>     /* srand, rand */
+#include <stdlib.h>
 #include "TVector.h"
 
 using namespace std;
-//vectors
+
 TVector::TVector(double x)
 {
 	this->x = x;
