@@ -7,5 +7,7 @@ using namespace std;
 
 int main()
 {
-	//generate_chars(5);
+	int n;
+	init_arr_size(n);
+	//generate_chars(n);
 }

@@ -4,6 +4,16 @@
 
 using namespace std;
 
+void init_arr_size(int& n)
+{
+	cout << "Enter number of chars: ";
+	cin >> n;
+	while (n<1)
+	{
+		cout << "Try again: ";
+		cin >> n;
+	}
+}
 vector <char> generate_chars(int n)
 {
 	int rangeMin = 32;
