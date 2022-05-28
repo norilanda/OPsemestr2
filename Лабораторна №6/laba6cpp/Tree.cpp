@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <vector>
 #include "Tree.h"
 
 using namespace std;
@@ -11,49 +13,80 @@ Tree::~Tree()
 {
 	delete root;
 }
-void Tree::built_tree(char* arr, int index, int n)
+void Tree::built_tree(vector <char> arr)
 {
-	while (index < n)
-	{
-		add_node(root, arr[index]);
-		index++;
-	}
+	for (int i = 0; i < arr.size(); i++)
+		add_node(root, arr[i]);
 }
 
-void Tree::add_node(Node* parent, char newChar)
+void Tree::add_node(Node* &parent, char newChar)
 {
 	if (parent == NULL)
-		parent = new Node(newChar);
+		parent = new Node(newChar);		
 	else if (newChar < parent->data)
 	{
 		if (parent->left == NULL)
 			parent->left = new Node(newChar);
 		else
-			(parent->left, newChar);
+			add_node(parent->left, newChar);
 	}
 	else if (newChar > parent->data)
 	{
 		if (parent->right == NULL)
 			parent->right = new Node(newChar);
 		else
-			(parent->right, newChar);
+			add_node(parent->right, newChar);
 	}
 	else
 		parent->counter++;
 }
 
-void Tree::display_tree(Node* parent, int distance)
+void Tree::print_tree()
 {
+	print_node_pre_order(root, 0);
+}
+void Tree::print_node_pre_order(Node* &parent, int level)
+{
+	char space = ' ';
+	char under = '_';
+	for (int i = 0; i < level; i++)
+		cout << string(3, space) << "|";
+	cout << string(2, under);
+	if (parent != NULL)
+	{
+		cout << parent->data << "\n";
+		print_node_pre_order(parent->right, level + 1);
+		print_node_pre_order(parent->left, level + 1);
+	}
+	else
+		cout << "\n";
+}
 
+int Tree::search_char_level(char ch)
+{
+	int n = search_recursion(root, ch, 0);
+	return n;
+}
+int Tree::search_recursion(Node*& parent, char ch, int level)
+{
+	if (parent == NULL)
+		return -1;
+	else if (parent->data == ch)
+		return level;
+	else if (ch < parent->data)
+		return search_recursion(parent->left, ch, level + 1);
+	else
+		return search_recursion(parent->right, ch, level + 1);	
 }
 
 Node::Node(char ch)
 {
-	char data = ch;
-	int counter = 0;
-	Node* left = NULL;
-	Node* right = NULL;
+	data = ch;
+	counter = 0;
+	left = NULL;
+	right = NULL;
 }
+
 Node::~Node()
 {
 	delete left;

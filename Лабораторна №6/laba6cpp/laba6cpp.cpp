@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <stdlib.h>
+#include <vector>
 #include "Functions.h"
 #include "Tree.h"
 
@@ -7,7 +8,20 @@ using namespace std;
 
 int main()
 {
+	srand(time(0));
 	int n;
 	init_arr_size(n);
-	//generate_chars(n);
+	vector <char> arr = enter_char_arr(n);
+	Tree tree;
+	tree.built_tree(arr);
+	cout << "\nCreated tree:\n";
+	tree.print_tree();
+	char ch;
+	cout << "\nEnter char to search: ";
+	cin >> ch;
+	int level = tree.search_char_level(ch);
+	if (level != -1)
+		cout << "level of char " << ch << " = " << level << "\n";
+	else
+		cout << "There is no char " << ch << "\n";
 }
