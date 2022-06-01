@@ -21,7 +21,7 @@ int main()
 	char ch = init_char();
 	int level = tree.search_char_level(ch);
 	if (level != -1)
-		cout << "level of char" << ch << " = " << level << "\n";
+		cout << "level of char " << ch << " = " << level << "\n";
 	else
 		cout << "There is no char " << ch << "\n";
 }
