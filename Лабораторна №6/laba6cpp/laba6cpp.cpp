@@ -8,7 +8,6 @@ using namespace std;
 
 int main()
 {
-	//COUNTER!!!!!
 	srand(time(0));
 	int n;
 	init_arr_size(n);
