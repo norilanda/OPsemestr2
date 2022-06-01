@@ -64,5 +64,18 @@ vector <char> init_chars(int n)
 		arr[i] = str[i];
 	return arr;
 }
-
+char init_char()
+{
+	char ch;
+	cout << "\nEnter char to search: ";
+	string str;
+	getline(cin, str);
+	while (str.length() < 1)
+	{
+		cout << "Try again! ";
+		getline(cin, str);
+	}
+	ch = str[0];
+	return ch;
+}
 

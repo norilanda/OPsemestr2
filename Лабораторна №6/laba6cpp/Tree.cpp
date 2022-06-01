@@ -13,13 +13,13 @@ Tree::~Tree()
 {
 	delete root;
 }
-void Tree::built_tree(vector <char> arr)
+
+void Tree::add_node(char ch)
 {
-	for (int i = 0; i < arr.size(); i++)
-		add_node(root, arr[i]);
+	add_node_recursion(root, ch);
 }
 
-void Tree::add_node(Node* &parent, char newChar)
+void Tree::add_node_recursion(Node* &parent, char newChar)
 {
 	if (parent == NULL)
 		parent = new Node(newChar);		
@@ -28,17 +28,15 @@ void Tree::add_node(Node* &parent, char newChar)
 		if (parent->left == NULL)
 			parent->left = new Node(newChar);
 		else
-			add_node(parent->left, newChar);
+			add_node_recursion(parent->left, newChar);
 	}
 	else if (newChar > parent->data)
 	{
 		if (parent->right == NULL)
 			parent->right = new Node(newChar);
 		else
-			add_node(parent->right, newChar);
+			add_node_recursion(parent->right, newChar);
 	}
-	else
-		parent->counter++;
 }
 
 void Tree::print_tree()
@@ -82,11 +80,9 @@ int Tree::search_recursion(Node*& parent, char ch, int level)
 Node::Node(char ch)
 {
 	data = ch;
-	counter = 0;
 	left = NULL;
 	right = NULL;
 }
-
 Node::~Node()
 {
 	delete left;

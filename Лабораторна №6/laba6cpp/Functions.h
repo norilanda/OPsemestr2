@@ -9,4 +9,4 @@ vector <char> generate_chars(int n);
 vector <char> init_chars(int n);
 void print_arr(vector <char> arr);
 vector <char> enter_char_arr(int n);
-
+char init_char();
