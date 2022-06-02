@@ -24,19 +24,9 @@ void Tree::add_node_recursion(Node* &parent, char newChar)
 	if (parent == NULL)
 		parent = new Node(newChar);		
 	else if (newChar < parent->data)
-	{
-		if (parent->left == NULL)
-			parent->left = new Node(newChar);
-		else
-			add_node_recursion(parent->left, newChar);
-	}
+		add_node_recursion(parent->left, newChar);
 	else if (newChar > parent->data)
-	{
-		if (parent->right == NULL)
-			parent->right = new Node(newChar);
-		else
-			add_node_recursion(parent->right, newChar);
-	}
+		add_node_recursion(parent->right, newChar);
 }
 
 void Tree::print_tree()
